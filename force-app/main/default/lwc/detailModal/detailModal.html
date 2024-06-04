@@ -1,0 +1,50 @@
+<template>
+    <lightning-modal-header label="View Report Detail"></lightning-modal-header>
+    <lightning-modal-body> 
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-text-align_left" scope="col">
+                        <div class="slds-truncate" title="Employee">Employee</div>
+                    </th>
+                    <th class="slds-text-align_left" scope="col">
+                        <div class="slds-truncate" title="Amount">Amount</div>
+                    </th>
+                    <th class="slds-text-align_left" scope="col">
+                        <div class="slds-truncate" title="Date">Date</div>
+                    </th>
+                    <th class="slds-text-align_left" scope="col">
+                        <div class="slds-truncate" title="Status">Status</div>
+                    </th>
+                    
+                   
+                </tr>
+            </thead>
+            <tbody>
+        <template lwc:if={modalDetail.data}>
+            <template for:each={modalDetail.data} for:item="m">
+                <tr key={m.Id}>
+                    <td data-label="Employee">
+                        <div class="slds-truncate" title={m.Name}>{m.Name}</div>
+                    </td>
+                    <td data-label="Amount">
+                        <div class="slds-truncate" title={m.Amount__c}>{m.Amount__c}</div>
+                    </td>
+                    <td data-label="Date">
+                        <div class="slds-truncate" title={m.Date__c}>{m.Date__c}</div>
+                    </td>
+                    <td data-label="Status">
+                        <div class="slds-truncate" title={m.Status__c} >{m.Status__c}</div>
+                    </td>
+                   
+                </tr>
+            </template>
+          </template>
+          </tbody>
+          </table>
+
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button label="OK" onclick={handleOkay}></lightning-button>
+    </lightning-modal-footer>
+</template>
